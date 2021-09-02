@@ -3,7 +3,7 @@
 
     import AddItem from "./AddItem.svelte";
     import {getContext} from "svelte";
-    import {key} from "../.../../external/external.js";
+    import {key} from "../../external/external.js";
     const getExt = getContext(key);
 </script>
 
