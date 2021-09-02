@@ -5,8 +5,26 @@
 	import { setContext } from "svelte";
 	import { extVar, key } from "./external/external.js";
 	setContext(key, extVar);
+	import { Router, Route, Link } from "svelte-routing";
+	import PageA from "./pages/PageA.svelte";
+	import PageB from "./pages/PageB.svelte";
+	export let url =  "";
 </script>
-
+<Router url="{url}">
+	<nav>
+	   <Link to="PageA">Page A</Link>
+	   <Link to="PageB">Page B</Link>
+	 </nav>
+	 <div>
+	   <Route path="PageA" component="{PageA}" /> 
+	   <!--for now the router just support case sensitive,
+		   one workaround colud be add two time the route
+		   Example.
+		  <Route path="About" component="{About}" /> 
+	   -->
+	   <Route path="PageB"><PageB /></Route>
+	 </div>
+   </Router>
 <main>
 	<div class="items">
 		{#each inventory as item}
